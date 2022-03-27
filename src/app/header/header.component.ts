@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   public title = 'header';
+
+  public userName = 'Your Name';
+
+  public searchPlaceholder = 'What are you want to find out?';
 }
