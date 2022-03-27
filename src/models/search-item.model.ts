@@ -6,7 +6,7 @@ export interface ISearchItem {
     publishedAt: string;
     channelId: string;
     title: string;
-    description?: string;
+    description: string;
     thumbnails: {
       default: VideoThumbnails;
       medium: VideoThumbnails;

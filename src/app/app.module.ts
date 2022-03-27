@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { SearchResultsComponent } from './search/search-results/search-results.component';
 import { SearchItemComponent } from './search/search-item/search-item.component';
 import { FilterComponent } from './filter/filter.component';
+import { ShortNumberPipe } from './custom-pipe/short-number/short-number.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -13,6 +14,7 @@ import { FilterComponent } from './filter/filter.component';
     SearchResultsComponent,
     SearchItemComponent,
     FilterComponent,
+    ShortNumberPipe,
   ],
   imports: [BrowserAnimationsModule, BrowserModule],
   providers: [],
