@@ -1,4 +1,4 @@
-<div class="card flex-column">
+<div class="card flex-column" *ngIf="post" [style.border-color]="cardBorderColor">
   <img src="{{ post.snippet.thumbnails.medium.url }}" alt="" class="thumbnails" />
   <div class="flex-row statistics-row">
     <div class="flex-row statistics-item">

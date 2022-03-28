@@ -11,4 +11,10 @@ export class HeaderComponent {
   public userName = 'Your Name';
 
   public searchPlaceholder = 'What are you want to find out?';
+
+  public showFilter = false;
+
+  toggleFilter() {
+    this.showFilter = !this.showFilter;
+  }
 }

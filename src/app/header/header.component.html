@@ -7,7 +7,7 @@
         <input type="text" class="input input-text" [placeholder]="searchPlaceholder" />
         <button class="btn btn-text">search</button>
       </form>
-      <div class="search-wrapper">
+      <div class="search-wrapper" (click)="toggleFilter()">
         <svg
           width="24"
           height="24"
@@ -45,3 +45,4 @@
     </div>
   </div>
 </div>
+<app-filter *ngIf="showFilter"></app-filter>
