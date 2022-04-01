@@ -7,6 +7,7 @@
   }
   .input-row {
     align-items: center;
+    margin-right: 10px;
   }
   .title {
     margin-right: 10px;
@@ -16,6 +17,9 @@
     margin-right: 21px;
     color: var(--main-color);
     cursor: pointer;
+    &.active {
+      text-decoration-line: underline;
+    }
   }
   .search-row {
     margin-right: 10px;

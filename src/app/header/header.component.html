@@ -3,9 +3,14 @@
     <div class="shadow-grid"></div>
     <div class="central-area flex-row">
       <img src="../../assets/image/logo.png" alt="logo" width="50px" class="logo" />
-      <form action="" class="form-wrapper">
-        <input type="text" class="input input-text" [placeholder]="searchPlaceholder" />
-        <button class="btn btn-text">search</button>
+      <form action="" class="form-wrapper" (submit)="(false)">
+        <input
+          type="text"
+          class="input input-text"
+          [placeholder]="searchPlaceholder"
+          #searchInput
+        />
+        <button class="btn btn-text" (click)="searchValue(searchInput.value)">search</button>
       </form>
       <div class="search-wrapper" (click)="toggleFilter()">
         <svg
@@ -45,4 +50,8 @@
     </div>
   </div>
 </div>
-<app-filter *ngIf="showFilter"></app-filter>
+<app-filter
+  *ngIf="showFilter"
+  (sortBySetter)="handelSortMethod($event)"
+  (sortDirectionSetter)="handlerSortDirection($event)"
+></app-filter>

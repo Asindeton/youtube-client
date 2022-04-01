@@ -8,5 +8,21 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'youtube-client';
 
-  word = '';
+  public searchWord = '';
+
+  public sortBy = '';
+
+  public sortDirection = '';
+
+  public handleSearchWord(value: string) {
+    this.searchWord = value;
+  }
+
+  public handlerSortResult(value: string) {
+    this.sortBy = value;
+  }
+
+  public handlerSortDirection(value: string) {
+    this.sortDirection = value;
+  }
 }

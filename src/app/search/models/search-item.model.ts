@@ -25,11 +25,11 @@ export interface ISearchItem {
     defaultAudioLanguage: string;
   };
   statistics: {
-    viewCount: string | number;
-    likeCount: string | number;
-    dislikeCount: string | number;
-    favoriteCount: string | number;
-    commentCount: string | number;
+    viewCount: string;
+    likeCount: string;
+    dislikeCount: string;
+    favoriteCount: string;
+    commentCount: string;
   };
 }
 

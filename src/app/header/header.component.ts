@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +14,25 @@ export class HeaderComponent {
 
   public showFilter = false;
 
+  @Output() searchWordSetter = new EventEmitter<string>();
+
+  @Output() sortingMethodSetter = new EventEmitter<string>();
+
+  @Output() sortingDirectionSetter = new EventEmitter<string>();
+
   toggleFilter() {
     this.showFilter = !this.showFilter;
+  }
+
+  searchValue(value: string) {
+    this.searchWordSetter.emit(value);
+  }
+
+  handelSortMethod(val: string) {
+    this.sortingMethodSetter.emit(val);
+  }
+
+  handlerSortDirection(val: string) {
+    this.sortingDirectionSetter.emit(val);
   }
 }

@@ -4,8 +4,8 @@ export interface ISearchResponse {
   kind: string;
   etag: string;
   pageInfo: {
-    totalResults: number | string;
-    resultsPerPage: number | string;
+    totalResults: number;
+    resultsPerPage: number;
   };
   items: ISearchItem[];
 }

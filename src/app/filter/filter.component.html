@@ -1,11 +1,24 @@
 <div class="wrapper filter">
   <div class="content flex-row text">
     <div class="title">Sorting by:</div>
-    <div class="filter-item">date</div>
-    <div class="filter-item">count of views</div>
+    <div class="filter-item" (click)="filterHandler('date')" [class.active]="sortBy === 'date'">
+      date
+    </div>
+    <div class="filter-item" (click)="filterHandler('count')" [class.active]="sortBy === 'count'">
+      count of views
+    </div>
     <div class="flex-row input-row">
-      <div class="search-row">by word or sentance</div>
-      <input type="text" class="input" />
+      <div
+        class="search-row filter-item"
+        (click)="filterHandler('word')"
+        [class.active]="sortBy.includes('word')"
+      >
+        by word or sentence
+      </div>
+      <input type="text" class="input" (input)="searchByWord(wordInput.value)" #wordInput />
+    </div>
+    <div class="filter-item active" (click)="changeSortDirection()">
+      {{ sortDirection }}
     </div>
   </div>
 </div>

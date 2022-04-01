@@ -7,6 +7,7 @@ import { SearchResultsComponent } from './search/search-results/search-results.c
 import { SearchItemComponent } from './search/search-item/search-item.component';
 import { FilterComponent } from './filter/filter.component';
 import { ShortNumberPipe } from './custom-pipe/short-number/short-number.pipe';
+import { WordSortingPipe } from './custom-pipe/word-sorting/word-sorting.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,6 +16,7 @@ import { ShortNumberPipe } from './custom-pipe/short-number/short-number.pipe';
     SearchItemComponent,
     FilterComponent,
     ShortNumberPipe,
+    WordSortingPipe,
   ],
   imports: [BrowserAnimationsModule, BrowserModule],
   providers: [],
