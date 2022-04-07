@@ -1,19 +1,21 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
 import * as data from 'src/assets/data/response.json';
 import { ISearchItem } from 'src/app/search/models/search-item.model';
 import { ISearchResponse } from 'src/app/search/models/search-response.model';
+import { SortDirection } from 'src/app/filter/model/filter.model';
 
 @Component({
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchResultsComponent implements OnChanges {
   @Input() public searchWord!: string;
 
   @Input() public sortBy!: string;
 
-  @Input() public sortDirection: string = 'up';
+  @Input() public sortDirection: SortDirection = SortDirection.up;
 
   responseData: ISearchResponse = data;
 
@@ -49,10 +51,10 @@ export class SearchResultsComponent implements OnChanges {
     this.sortDirectionHelper(this.items, this.sortDirection);
   }
 
-  sortDirectionHelper(array: ISearchItem[], direction: string): ISearchItem[] | null {
-    if (direction == 'up') {
+  sortDirectionHelper(array: ISearchItem[], direction: SortDirection): ISearchItem[] | null {
+    if (direction == SortDirection.up) {
       return array;
-    } else if (direction == 'down') {
+    } else if (direction == SortDirection.down) {
       return array.reverse();
     }
     return null;

@@ -1,3 +1,4 @@
+import { SortDirection } from './../filter/model/filter.model';
 import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -18,7 +19,7 @@ export class HeaderComponent {
 
   @Output() sortingMethodSetter = new EventEmitter<string>();
 
-  @Output() sortingDirectionSetter = new EventEmitter<string>();
+  @Output() sortingDirectionSetter = new EventEmitter<SortDirection>();
 
   toggleFilter() {
     this.showFilter = !this.showFilter;
@@ -32,7 +33,7 @@ export class HeaderComponent {
     this.sortingMethodSetter.emit(val);
   }
 
-  handlerSortDirection(val: string) {
+  handlerSortDirection(val: SortDirection) {
     this.sortingDirectionSetter.emit(val);
   }
 }

@@ -1,3 +1,4 @@
+import { SortDirection } from './filter/model/filter.model';
 import { Component } from '@angular/core';
 
 @Component({
@@ -12,7 +13,7 @@ export class AppComponent {
 
   public sortBy = '';
 
-  public sortDirection = '';
+  public sortDirection: SortDirection = SortDirection.up;
 
   public handleSearchWord(value: string) {
     this.searchWord = value;
@@ -22,7 +23,7 @@ export class AppComponent {
     this.sortBy = value;
   }
 
-  public handlerSortDirection(value: string) {
+  public handlerSortDirection(value: SortDirection) {
     this.sortDirection = value;
   }
 }

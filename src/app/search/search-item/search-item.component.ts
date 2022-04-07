@@ -31,6 +31,7 @@ export class SearchItemComponent implements OnInit {
     // If a publication date is less than a month, set border background to green
     // If a publication date is less than 7 days, set border background to blue
     // If a publication date is more than 6 months, set border background to red
+
     if (diffDays / 30 > 6) {
       this.cardBorderColor = this.colors.red;
     } else if (diffDays / 30 < 6 && diffDays / 30 > 1) {

@@ -8,6 +8,7 @@
           type="text"
           class="input input-text"
           [placeholder]="searchPlaceholder"
+          required="true"
           #searchInput
         />
         <button class="btn btn-text" (click)="searchValue(searchInput.value)">search</button>
