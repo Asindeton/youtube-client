@@ -19,6 +19,7 @@ import { WordSortingPipe } from './custom-pipe/word-sorting/word-sorting.pipe';
     WordSortingPipe,
   ],
   imports: [BrowserAnimationsModule, BrowserModule],
+
   providers: [],
   bootstrap: [AppComponent],
 })

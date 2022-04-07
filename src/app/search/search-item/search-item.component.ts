@@ -1,11 +1,14 @@
+
 import { Component, Input, OnInit } from '@angular/core';
 import { ISearchItem } from 'src/app/search/models/search-item.model';
+
 
 @Component({
   selector: 'app-search-item',
   templateUrl: './search-item.component.html',
   styleUrls: ['./search-item.component.scss'],
 })
+
 export class SearchItemComponent implements OnInit {
   @Input() public post!: ISearchItem;
 
@@ -42,4 +45,5 @@ export class SearchItemComponent implements OnInit {
       this.cardBorderColor = this.colors.blue;
     }
   }
+
 }

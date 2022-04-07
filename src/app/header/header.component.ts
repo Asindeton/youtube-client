@@ -1,5 +1,7 @@
+
 import { SortDirection } from './../filter/model/filter.model';
 import { Component, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-header',
@@ -8,6 +10,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class HeaderComponent {
   public title = 'header';
+
 
   public userName = 'Your Name';
 
@@ -36,4 +39,5 @@ export class HeaderComponent {
   handlerSortDirection(val: SortDirection) {
     this.sortingDirectionSetter.emit(val);
   }
+
 }
