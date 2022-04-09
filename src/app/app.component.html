@@ -1,12 +1,11 @@
-
 <app-header
   (searchWordSetter)="handleSearchWord($event)"
   (sortingMethodSetter)="handlerSortResult($event)"
   (sortingDirectionSetter)="handlerSortDirection($event)"
 ></app-header>
+
 <app-search-results
   [searchWord]="searchWord"
   [sortBy]="sortBy"
   [sortDirection]="sortDirection"
 ></app-search-results>
-

@@ -1,5 +1,5 @@
+import { ISearchItem } from './../../../youtube/components/search/models/search-item.model';
 import { Pipe, PipeTransform } from '@angular/core';
-import { ISearchItem } from 'src/app/search/models/search-item.model';
 
 @Pipe({
   name: 'wordSorting',

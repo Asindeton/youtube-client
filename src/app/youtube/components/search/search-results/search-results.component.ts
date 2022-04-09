@@ -1,10 +1,8 @@
-
+import { SortDirection } from './../../filter/model/filter.model';
+import { ISearchItem } from './../models/search-item.model';
 import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
 import * as data from 'src/assets/data/response.json';
-import { ISearchItem } from 'src/app/search/models/search-item.model';
-import { ISearchResponse } from 'src/app/search/models/search-response.model';
-import { SortDirection } from 'src/app/filter/model/filter.model';
-
+import { ISearchResponse } from './../models/search-response.model';
 
 @Component({
   selector: 'app-search-results',
@@ -61,5 +59,4 @@ export class SearchResultsComponent implements OnChanges {
     }
     return null;
   }
-
 }
