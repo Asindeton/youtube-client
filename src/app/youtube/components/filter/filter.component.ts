@@ -1,5 +1,6 @@
-import { Component, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { SortDirection } from './model/filter.model';
+import { FilterService } from './../../services/filter.service';
+import { CoreService } from './../../../core/services/core.service';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-filter',
@@ -7,44 +8,28 @@ import { SortDirection } from './model/filter.model';
   styleUrls: ['./filter.component.scss'],
 })
 export class FilterComponent {
-  public sortBy: string = '';
-
-  public sortDirection: SortDirection = SortDirection.up;
+  constructor(public coreService: CoreService, public filterService: FilterService) {}
 
   @ViewChild('wordInput')
   wordInput!: ElementRef;
 
-  @Output()
-  sortBySetter = new EventEmitter<string>();
-
-  @Output()
-  sortDirectionSetter = new EventEmitter<SortDirection>();
-
   filterHandler(event: string) {
-    if (this.sortBy == event) {
-      this.changeSortDirection();
-    } else {
-      this.sortBy = event;
-    }
-    if (this.sortBy.includes('word')) {
-      this.sortBy = 'word-' + this.wordInput.nativeElement.value;
-      if (this.wordInput.nativeElement.value) {
-        this.changeSortDirection();
-      }
-    }
-    this.sortBySetter.emit(this.sortBy);
+    this.filterService.filterHandler(event, this.wordInput);
+    this.setChanges();
   }
 
   searchByWord(event: string) {
-    if (this.sortBy.includes('word')) {
-      this.sortBy = 'word-' + event;
-      this.sortBySetter.emit(this.sortBy);
-    }
+    this.filterService.searchByWord(event);
+    this.setChanges();
   }
 
   changeSortDirection() {
-    this.sortDirection =
-      this.sortDirection == SortDirection.up ? SortDirection.down : SortDirection.up;
-    this.sortDirectionSetter.emit(this.sortDirection);
+    this.filterService.changeSortDirection();
+    this.setChanges();
+  }
+
+  setChanges() {
+    this.coreService.sortBy = this.filterService.sortBy;
+    this.coreService.sortDirection = this.filterService.sortDirection;
   }
 }

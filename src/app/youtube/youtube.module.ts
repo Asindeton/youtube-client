@@ -4,10 +4,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FilterComponent } from './components/filter/filter.component';
 import { SharedModule } from '../shared/shared.module';
+import { SearchResultPageComponent } from './pages/search-result-page/search-result-page.component';
+import { YoutubeRoutingModule } from './youtube-routing.module';
+import { FilterService } from './services/filter.service';
 
 @NgModule({
-  declarations: [FilterComponent, SearchResultsComponent, SearchItemComponent],
-  imports: [CommonModule, SharedModule],
-  exports: [FilterComponent, SearchResultsComponent],
+  declarations: [
+    FilterComponent,
+    SearchResultsComponent,
+    SearchItemComponent,
+    SearchResultPageComponent,
+  ],
+  imports: [CommonModule, SharedModule, YoutubeRoutingModule],
+  providers: [FilterService],
 })
 export class YoutubeModule {}

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { SortDirection } from './youtube/components/filter/model/filter.model';
 
 @Component({
@@ -7,6 +8,8 @@ import { SortDirection } from './youtube/components/filter/model/filter.model';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  constructor(public router: Router) {}
+
   title = 'youtube-client';
 
   public searchWord = '';

@@ -1,6 +1,7 @@
-import { SortDirection } from './../../filter/model/filter.model';
+import { CoreService } from './../../../../core/services/core.service';
+import { SearchResultsService } from './../../../services/search-results.service';
 import { ISearchItem } from './../models/search-item.model';
-import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import * as data from 'src/assets/data/response.json';
 import { ISearchResponse } from './../models/search-response.model';
 
@@ -8,55 +9,17 @@ import { ISearchResponse } from './../models/search-response.model';
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [SearchResultsService],
 })
-export class SearchResultsComponent implements OnChanges {
-  @Input() public searchWord!: string;
+export class SearchResultsComponent {
+  constructor(public coreService: CoreService) {}
 
-  @Input() public sortBy!: string;
+  searchWord = this.coreService.searchWord;
 
-  @Input() public sortDirection: SortDirection = SortDirection.up;
-
+  //to-do remove to data service
   responseData: ISearchResponse = data;
 
+  renderFinish = false;
+
   items: ISearchItem[] = this.responseData.items;
-
-  ngOnChanges(): void {
-    this.searchResultHandler();
-    this.sortResultHandler();
-  }
-
-  searchResultHandler() {
-    this.items = this.responseData.items;
-    if (this.searchWord.trim() == '') {
-      this.items = [];
-    } else {
-      this.items = this.items.filter((item) =>
-        item.snippet.title.toLowerCase().includes(this.searchWord.toLowerCase()),
-      );
-    }
-  }
-
-  sortResultHandler() {
-    if (this.sortBy == 'date') {
-      this.items = this.items.sort(
-        (a, b) =>
-          new Date(a.snippet.publishedAt).getTime() - new Date(b.snippet.publishedAt).getTime(),
-      );
-    } else if (this.sortBy == 'count') {
-      this.items = this.items.sort(
-        (a, b) => parseInt(a.statistics.viewCount) - parseInt(b.statistics.viewCount),
-      );
-    }
-    this.sortDirectionHelper(this.items, this.sortDirection);
-  }
-
-  sortDirectionHelper(array: ISearchItem[], direction: SortDirection): ISearchItem[] | null {
-    if (direction == SortDirection.up) {
-      return array;
-    } else if (direction == SortDirection.down) {
-      return array.reverse();
-    }
-    return null;
-  }
 }
