@@ -8,7 +8,9 @@ export class ShortNumberPipe implements PipeTransform {
     let exp,
       suffixes = ['K', 'M', 'G', 'T', 'P', 'E'];
     let formattedInput: number = typeof input == 'string' ? Number.parseInt(input) : input;
-
+    if (input == undefined) {
+      return '';
+    }
     if (Number.isNaN(input)) {
       return null;
     }

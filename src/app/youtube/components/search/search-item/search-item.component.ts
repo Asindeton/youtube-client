@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CardService } from './../../../services/card.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { ISearchItem } from '../models/search-item.model';
@@ -8,7 +9,7 @@ import { ISearchItem } from '../models/search-item.model';
   styleUrls: ['./search-item.component.scss'],
 })
 export class SearchItemComponent implements OnInit {
-  constructor(private cardService: CardService) {}
+  constructor(private cardService: CardService, public router: Router) {}
 
   @Input() public post!: ISearchItem;
 

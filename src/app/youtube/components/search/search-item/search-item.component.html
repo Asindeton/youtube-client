@@ -20,8 +20,8 @@
   </div>
   <div class="flex-column title-wrapper">
     <div class="title">{{ post.snippet.title }}</div>
-    <div class="btn-wrapper flex-row">
+    <a class="btn-wrapper flex-row" [routerLink]="['detailed', post.id]">
       <div class="btn btn-text">more...</div>
-    </div>
+    </a>
   </div>
 </div>

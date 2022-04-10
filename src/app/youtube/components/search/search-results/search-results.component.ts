@@ -14,12 +14,8 @@ import { ISearchResponse } from './../models/search-response.model';
 export class SearchResultsComponent {
   constructor(public coreService: CoreService) {}
 
-  searchWord = this.coreService.searchWord;
-
   //to-do remove to data service
   responseData: ISearchResponse = data;
-
-  renderFinish = false;
 
   items: ISearchItem[] = this.responseData.items;
 }
