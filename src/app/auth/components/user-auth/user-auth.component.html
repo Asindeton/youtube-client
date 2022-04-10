@@ -3,11 +3,11 @@
   <form (submit)="formSubmit($event)" class="flex-column">
     <label class="flex-column">
       <span>{{ login }}</span>
-      <input type="text" class="input-text" name="login" />
+      <input type="text" class="input-text" name="login" required />
     </label>
     <label class="flex-column">
       <span>{{ password }}</span>
-      <input type="text" class="input-text" name="password" />
+      <input type="password" class="input-text" name="password" required />
     </label>
     <button class="btn btn-text">{{ login | titlecase }}</button>
   </form>

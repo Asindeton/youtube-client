@@ -1,3 +1,4 @@
+import { CardService } from './services/card.service';
 import { SearchItemComponent } from './components/search/search-item/search-item.component';
 import { SearchResultsComponent } from './components/search/search-results/search-results.component';
 import { NgModule } from '@angular/core';
@@ -16,6 +17,6 @@ import { FilterService } from './services/filter.service';
     SearchResultPageComponent,
   ],
   imports: [CommonModule, SharedModule, YoutubeRoutingModule],
-  providers: [FilterService],
+  providers: [FilterService, CardService],
 })
 export class YoutubeModule {}

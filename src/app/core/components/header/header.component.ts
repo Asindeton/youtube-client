@@ -1,3 +1,5 @@
+import { AuthService } from './../../services/auth.service';
+import { Router } from '@angular/router';
 import { CoreService } from './../../services/core.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,13 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  constructor(
+    private coreService: CoreService,
+    public router: Router,
+    public authService: AuthService,
+  ) {}
+
   public title = 'header';
 
-  public userName = 'Your Name';
-
   public searchPlaceholder = 'What are you want to find out?';
-
-  constructor(private coreService: CoreService) {}
 
   ngOnInit(): void {
     this.coreService.check();
