@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class CoreService {
-  public count = 0;
-
   public sortBy: string = '';
 
   public searchWord: string = '';
@@ -13,6 +11,10 @@ export class CoreService {
 
   public showFilter = false;
 
+  toggleFilter() {
+    this.showFilter = !this.showFilter;
+  }
+
   setSearchWord(val: string) {
     this.searchWord = val;
     console.log(this.searchWord);
@@ -20,11 +22,5 @@ export class CoreService {
 
   getSearchWord() {
     return this.searchWord;
-  }
-
-  check() {
-    this.count++;
-    console.log(this.count);
-    console.log('isWork');
   }
 }

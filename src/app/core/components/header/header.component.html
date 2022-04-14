@@ -13,9 +13,8 @@
           required="true"
           #searchInput
         />
-        <button class="btn btn-text" (click)="searchValue(searchInput.value)">search</button>
       </form>
-      <div class="search-wrapper" (click)="toggleFilter()">
+      <div class="search-wrapper" (click)="this.coreService.toggleFilter()">
         <svg
           width="24"
           height="24"
@@ -33,13 +32,13 @@
     </div>
     <div class="login-area flex-row">
       <div class="user-name text">
-        {{ this.authService.isLogin ? this.authService.nickname : 'Your Name' }}
+        {{ this.isLogin ? this.authService.nickname : 'Your Name' }}
       </div>
       <a
         class="login-icon-wrapper"
         [routerLink]="['/login']"
         routerLinkActive="router-link-active"
-        *ngIf="!this.authService.isLogin"
+        *ngIf="!this.isLogin"
       >
         <svg
           width="24"
@@ -59,11 +58,7 @@
         </svg>
       </a>
 
-      <a
-        class="login-icon-wrapper"
-        *ngIf="this.authService.isLogin"
-        (click)="this.authService.logout()"
-      >
+      <a class="login-icon-wrapper" *ngIf="this.isLogin" (click)="this.authService.logout()">
         <svg
           width="24"
           height="24"

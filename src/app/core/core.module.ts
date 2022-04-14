@@ -1,3 +1,4 @@
+import { SearchService } from './services/search.service';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { NgModule } from '@angular/core';
@@ -9,6 +10,6 @@ import { ErrorPageComponent } from './pages/error-page/error-page.component';
   declarations: [HeaderComponent, ErrorPageComponent],
   imports: [CommonModule, RouterModule],
   exports: [HeaderComponent],
-  providers: [CoreService, AuthService],
+  providers: [CoreService, AuthService, SearchService],
 })
 export class CoreModule {}
