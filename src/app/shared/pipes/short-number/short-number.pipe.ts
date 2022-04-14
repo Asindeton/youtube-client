@@ -21,7 +21,6 @@ export class ShortNumberPipe implements PipeTransform {
 
     exp = Math.floor(Math.log(formattedInput) / Math.log(1000));
 
-    // return (formattedInput / Math.pow(1000, exp)).toFixed(args) + suffixes[exp - 1];
     return (
       (formattedInput / Math.pow(1000, exp)).toFixed(args + 1).slice(0, args * -1) +
       suffixes[exp - 1]

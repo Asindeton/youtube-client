@@ -6,7 +6,14 @@
   </div>
   <div class="flex-row content-wrapper">
     <div class="img-wrapper">
-      <img [src]="itemInfo.snippet.thumbnails.maxres.url" alt="" />
+      <img
+        [src]="
+          itemInfo.snippet.thumbnails.maxres
+            ? itemInfo.snippet.thumbnails.maxres.url
+            : itemInfo.snippet.thumbnails.high.url
+        "
+        alt=""
+      />
     </div>
     <div class="flex-column text-content" [style.border-color]="cardBorderColor">
       <div class="flex-row title-row">
@@ -26,7 +33,7 @@
           <div class="icon"><img src="../../../assets/image/icons/liked.svg" alt="" /></div>
           <div class="value">{{ itemInfo.statistics.likeCount | shortNumber }}</div>
         </div>
-        <div class="flex-row statistics-item">
+        <div class="flex-row statistics-item" *ngIf="itemInfo.statistics.dislikeCount">
           <div class="icon"><img src="../../../assets/image/icons/dislike.svg" alt="" /></div>
           <div class="value">{{ itemInfo.statistics.dislikeCount | shortNumber }}</div>
         </div>

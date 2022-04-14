@@ -1,10 +1,11 @@
+import { DataService } from './../../../core/services/data.service';
 import { CardService } from './../../services/card.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { ISearchItem } from 'src/models/search-item.model';
-import { ISearchResponse } from 'src/models/search-response.model';
-import * as data from 'src/assets/data/response.json';
+import * as defaultResponse from 'src/assets/data/defaultResponse.json';
+import { ISearchItem } from '../../components/search/models/search-item.model';
+import { ISearchResponse } from '../../components/search/models/search-response.model';
 
 @Component({
   selector: 'app-search-detailed',
@@ -17,10 +18,11 @@ export class SearchDetailedComponent implements OnInit {
     private router: Router,
     public location: Location,
     private cardService: CardService,
+    public dataService: DataService,
   ) {}
 
   //to-do remove to data service
-  responseData: ISearchResponse = data;
+  responseData: ISearchResponse = defaultResponse;
 
   items: ISearchItem[] = this.responseData.items;
 
@@ -29,8 +31,13 @@ export class SearchDetailedComponent implements OnInit {
   public cardBorderColor = '';
 
   ngOnInit() {
-    console.log(this.route.snapshot.params);
+    this.dataService.data.subscribe((data) => {
+      this.responseData = data;
+      this.items = data.items;
+    });
+
     const tempArr = this.items.find((elem) => elem.id == this.route.snapshot.params['id']);
+
     if (tempArr !== undefined) {
       this.itemInfo = tempArr;
       this.cardBorderColor = this.cardService.getBorderColor(this.itemInfo.snippet.publishedAt);
