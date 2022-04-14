@@ -9,9 +9,13 @@ export class DataService {
   constructor(private httpClient: HttpClient) {}
 
   public data = new BehaviorSubject<ISearchResponse>(defaultResponse);
+
   public videoIdArray: string[] = [];
+
   private url = 'https://www.googleapis.com/youtube/v3/search';
+
   private urlVideo = 'https://www.googleapis.com/youtube/v3/videos';
+
   private key = 'AIzaSyCTnAg-FEkVH0a1un3zHcvIediRUe-ATU4';
 
   getDataRequest(content: string): Observable<ISearchResponse> {
@@ -45,11 +49,12 @@ export class DataService {
       }),
     );
   }
+
   loadData(content: string) {
     this.getDataRequest(content).subscribe((response) => {
       response.items.forEach((elem) => this.videoIdArray.push(elem.id.videoId));
-      this.getVideoDataRequest(this.videoIdArray.join()).subscribe((response) => {
-        this.data.next(response);
+      this.getVideoDataRequest(this.videoIdArray.join()).subscribe((newResponse) => {
+        this.data.next(newResponse);
         this.videoIdArray = [];
       });
     });
