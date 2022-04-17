@@ -32,6 +32,20 @@
         background-color: var(--dark-gray-color);
         padding: 12px 8px;
         outline: none;
+        border-bottom: 5px solid;
+        border-color: transparent;
+        &.ng-touched.ng-invalid {
+          border-radius: 0px 0px 5px 5px;
+          border-color: var(--error-color);
+        }
+      }
+    }
+    &.err_on_submit {
+      label {
+        input.ng-invalid {
+          border-radius: 0px 0px 5px 5px;
+          border-color: var(--error-color);
+        }
       }
     }
   }
