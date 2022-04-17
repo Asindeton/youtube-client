@@ -4,9 +4,7 @@ import { AuthService } from './../../core/services/auth.service';
 import { Injectable } from '@angular/core';
 import { ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class LoginService {
   constructor(private authService: AuthService, private router: Router) {}
 

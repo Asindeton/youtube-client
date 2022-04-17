@@ -30,7 +30,11 @@
         </svg>
       </div>
     </div>
+
     <div class="login-area flex-row">
+      <div *ngIf="this.isLogin" class="add_card-wrapper text" routerLinkActive="router-link-active">
+        <a [routerLink]="['login', 'admin']"> Add Card </a>
+      </div>
       <div class="user-name text">
         {{ this.isLogin ? this.authService.nickname : 'Your Name' }}
       </div>

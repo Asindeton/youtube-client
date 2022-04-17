@@ -1,6 +1,6 @@
 import { CoreService } from './../../../core/services/core.service';
 import { LoginService } from './../../services/login.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   templateUrl: './user-auth.component.html',
   styleUrls: ['./user-auth.component.scss'],
 })
-export class UserAuthComponent implements OnInit {
+export class UserAuthComponent {
   constructor(private loginService: LoginService, private coreService: CoreService) {
     this.createForm();
   }
@@ -24,10 +24,6 @@ export class UserAuthComponent implements OnInit {
     }
     this.errorOnsubmit = false;
     this.loginService.submitHandler(this.loginForm.value);
-  }
-
-  ngOnInit(): void {
-    console.log('init');
   }
 
   private createForm() {
