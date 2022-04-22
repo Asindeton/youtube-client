@@ -1,1 +1,85 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --main-color: #2f80ed;
+  --hover-color: #5ea2ff;
+  --disable-color: #b1b1b1;
+  --bg-color: #e5e5e5;
+  --btn-text-color: #ffff;
+  --input-text-color: #929292;
+  --text-color: #000000;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.wrapper {
+  width: 100%;
+  .content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+}
+.flex {
+  &-row {
+    display: flex;
+    flex-direction: row;
+  }
+  &-column {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.btn {
+  background-color: var(--main-color);
+  border: none;
+  transition: all 0.3s;
+  cursor: pointer;
+  filter: drop-shadow(2px 0px 4px #2f80ed);
+
+  &:hover {
+    filter: none;
+  }
+  &-text {
+    color: var(--btn-text-color);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+}
+.input {
+  border: none;
+  padding: 5px;
+  outline: none;
+
+  &-text {
+    color: var(--text-color);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  &::placeholder {
+    color: var(--input-text-color);
+  }
+}
+
+.text {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: left;
+}

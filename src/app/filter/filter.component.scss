@@ -1,0 +1,29 @@
+.filter {
+  background-color: var(--bg-color);
+  padding: 18px 0px;
+  .content {
+    align-items: center;
+    justify-content: center;
+  }
+  .input-row {
+    align-items: center;
+    margin-right: 10px;
+  }
+  .title {
+    margin-right: 10px;
+    color: var(--input-text-color);
+  }
+  &-item {
+    margin-right: 21px;
+    color: var(--main-color);
+    cursor: pointer;
+    &.active {
+      text-decoration-line: underline;
+    }
+  }
+  .search-row {
+    margin-right: 10px;
+    color: var(--main-color);
+    cursor: pointer;
+  }
+}
