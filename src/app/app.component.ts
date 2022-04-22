@@ -1,5 +1,5 @@
-import { SortDirection } from './filter/model/filter.model';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,23 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'youtube-client';
-
-  public searchWord = '';
-
-  public sortBy = '';
-
-  public sortDirection: SortDirection = SortDirection.up;
-
-  public handleSearchWord(value: string) {
-    this.searchWord = value;
-  }
-
-  public handlerSortResult(value: string) {
-    this.sortBy = value;
-  }
-
-  public handlerSortDirection(value: SortDirection) {
-    this.sortDirection = value;
-  }
+  constructor(public router: Router) {}
 }

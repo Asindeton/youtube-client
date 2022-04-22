@@ -1,0 +1,29 @@
+<div class="wrapper filter" *ngIf="this.coreService.showFilter">
+  <div class="content flex-row text">
+    <div class="title">Sorting by:</div>
+    <div
+      class="filter-item"
+      (click)="filterHandler('date')"
+      [class.active]="this.filterService.sortBy === 'date'"
+    >
+      date
+    </div>
+    <div
+      class="filter-item"
+      (click)="filterHandler('count')"
+      [class.active]="this.filterService.sortBy === 'count'"
+    >
+      count of views
+    </div>
+    <div class="flex-row input-row">
+      <div
+        class="search-row filter-item"
+        (click)="filterHandler('word')"
+        [class.active]="this.filterService.sortBy.includes('word')"
+      >
+        by word or sentence
+      </div>
+      <input type="text" class="input" (input)="searchByWord(wordInput.value)" #wordInput />
+    </div>
+  </div>
+</div>

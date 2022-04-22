@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <div class="content search-result">
+    <app-search-item
+      *ngFor="
+        let post of items
+          | wordSorting
+            : this.coreService.searchWord
+            : this.coreService.sortDirection
+            : this.coreService.sortBy
+      "
+      [post]="post"
+    ></app-search-item>
+  </div>
+</div>

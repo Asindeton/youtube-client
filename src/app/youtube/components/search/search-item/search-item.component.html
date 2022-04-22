@@ -1,0 +1,27 @@
+<div class="card flex-column" *ngIf="post" [style.border-color]="cardBorderColor">
+  <img src="{{ post.snippet.thumbnails.medium.url }}" alt="" class="thumbnails" />
+  <div class="flex-row statistics-row">
+    <div class="flex-row statistics-item">
+      <div class="icon"><img src="../../../assets/image/icons/viewed.svg" alt="" /></div>
+      <div class="value">{{ post.statistics.viewCount | shortNumber }}</div>
+    </div>
+    <div class="flex-row statistics-item">
+      <div class="icon"><img src="../../../assets/image/icons/liked.svg" alt="" /></div>
+      <div class="value">{{ post.statistics.likeCount | shortNumber }}</div>
+    </div>
+    <div class="flex-row statistics-item">
+      <div class="icon"><img src="../../../assets/image/icons/dislike.svg" alt="" /></div>
+      <div class="value">{{ post.statistics.dislikeCount | shortNumber }}</div>
+    </div>
+    <div class="flex-row statistics-item">
+      <div class="icon"><img src="../../../assets/image/icons/Group 9.svg" alt="" /></div>
+      <div class="value">{{ post.statistics.commentCount | shortNumber }}</div>
+    </div>
+  </div>
+  <div class="flex-column title-wrapper">
+    <div class="title">{{ post.snippet.title }}</div>
+    <a class="btn-wrapper flex-row" [routerLink]="['detailed', post.id]">
+      <div class="btn btn-text">more...</div>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="wrapper flex-column">
+  <h2>{{ login | titlecase }}</h2>
+  <form (submit)="formSubmit($event)" class="flex-column">
+    <label class="flex-column">
+      <span>{{ login }}</span>
+      <input type="text" class="input-text" name="login" required />
+    </label>
+    <label class="flex-column">
+      <span>{{ password }}</span>
+      <input type="password" class="input-text" name="password" required />
+    </label>
+    <button class="btn btn-text">{{ login | titlecase }}</button>
+  </form>
+</div>
