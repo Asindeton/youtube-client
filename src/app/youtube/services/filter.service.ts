@@ -14,7 +14,7 @@ export class FilterService {
       this.sortBy = event;
     }
     if (this.sortBy.includes(SortType.Word)) {
-      this.sortBy = SortType.Word + '-' + wordInput.nativeElement.value;
+      this.sortBy = `${SortType.Word}-${wordInput.nativeElement.value}`;
       if (wordInput.nativeElement.value) {
         this.changeSortDirection();
       }
@@ -23,7 +23,7 @@ export class FilterService {
 
   searchByWord(event: string) {
     if (this.sortBy.includes(SortType.Word)) {
-      this.sortBy = SortType.Word + '-' + event;
+      this.sortBy = `${SortType.Word}-${event}`;
     }
   }
 
