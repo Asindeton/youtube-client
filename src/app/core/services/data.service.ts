@@ -16,11 +16,8 @@ export class DataService {
 
   private urlVideo = 'https://www.googleapis.com/youtube/v3/videos';
 
-  private key = 'AIzaSyCTnAg-FEkVH0a1un3zHcvIediRUe-ATU4';
-
   getDataRequest(content: string): Observable<ISearchResponse> {
     const params = new HttpParams()
-      .set('key', this.key)
       .set('type', 'video')
       .set('part', 'snippet')
       .set('maxResults', 10)
@@ -36,10 +33,7 @@ export class DataService {
   }
 
   getVideoDataRequest(idList: string) {
-    const params = new HttpParams()
-      .set('key', this.key)
-      .set('id', idList)
-      .set('part', 'snippet,statistics');
+    const params = new HttpParams().set('id', idList).set('part', 'snippet,statistics');
 
     return this.httpClient.get<ISearchResponse>(this.urlVideo, { params }).pipe(
       retry(4),

@@ -1,47 +1,58 @@
 <div class="wrapper flex-row">
-  <div class="back-wrapper" (click)="back()">
-    <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M16 2L3 10.2162L16 18" stroke="#F2F2F2" stroke-width="3" />
-    </svg>
-  </div>
-  <div class="flex-row content-wrapper">
-    <div class="img-wrapper">
-      <img
-        [src]="
-          itemInfo.snippet.thumbnails.maxres
-            ? itemInfo.snippet.thumbnails.maxres.url
-            : itemInfo.snippet.thumbnails.high.url
-        "
-        alt=""
-      />
+  <ng-container *ngIf="isLoaded; else elseTemplate">
+    <h1>Loading..</h1>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div class="back-wrapper" (click)="back()">
+      <svg
+        width="17"
+        height="20"
+        viewBox="0 0 17 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M16 2L3 10.2162L16 18" stroke="#F2F2F2" stroke-width="3" />
+      </svg>
     </div>
-    <div class="flex-column text-content" [style.border-color]="cardBorderColor">
-      <div class="flex-row title-row">
-        <h2 class="title">{{ itemInfo.snippet.title }}</h2>
-        <time class="time">{{ itemInfo.snippet.publishedAt | date: 'fullDate' }}</time>
+    <div class="flex-row content-wrapper">
+      <div class="img-wrapper">
+        <img
+          [src]="
+            itemInfo.snippet.thumbnails.maxres
+              ? itemInfo.snippet.thumbnails.maxres.url
+              : itemInfo.snippet.thumbnails.high.url
+          "
+          alt=""
+        />
       </div>
-      <div class="flex-column">
-        <div class="desc-title">Description:</div>
-        <div class="description-content">{{ itemInfo.snippet.description }}</div>
-      </div>
-      <div class="flex-row statistics-row">
-        <div class="flex-row statistics-item">
-          <div class="icon"><img src="../../../assets/image/icons/viewed.svg" alt="" /></div>
-          <div class="value">{{ itemInfo.statistics.viewCount | shortNumber }}</div>
+      <div class="flex-column text-content" [style.border-color]="cardBorderColor">
+        <div class="flex-row title-row">
+          <h2 class="title">{{ itemInfo.snippet.title }}</h2>
+          <time class="time">{{ itemInfo.snippet.publishedAt | date: 'fullDate' }}</time>
         </div>
-        <div class="flex-row statistics-item">
-          <div class="icon"><img src="../../../assets/image/icons/liked.svg" alt="" /></div>
-          <div class="value">{{ itemInfo.statistics.likeCount | shortNumber }}</div>
+        <div class="flex-column">
+          <div class="desc-title">Description:</div>
+          <div class="description-content">{{ itemInfo.snippet.description }}</div>
         </div>
-        <div class="flex-row statistics-item" *ngIf="itemInfo.statistics.dislikeCount">
-          <div class="icon"><img src="../../../assets/image/icons/dislike.svg" alt="" /></div>
-          <div class="value">{{ itemInfo.statistics.dislikeCount | shortNumber }}</div>
-        </div>
-        <div class="flex-row statistics-item">
-          <div class="icon"><img src="../../../assets/image/icons/Group 9.svg" alt="" /></div>
-          <div class="value">{{ itemInfo.statistics.commentCount | shortNumber }}</div>
+        <div class="flex-row statistics-row">
+          <div class="flex-row statistics-item">
+            <div class="icon"><img src="../../../assets/image/icons/viewed.svg" alt="" /></div>
+            <div class="value">{{ itemInfo.statistics.viewCount | shortNumber }}</div>
+          </div>
+          <div class="flex-row statistics-item">
+            <div class="icon"><img src="../../../assets/image/icons/liked.svg" alt="" /></div>
+            <div class="value">{{ itemInfo.statistics.likeCount | shortNumber }}</div>
+          </div>
+          <div class="flex-row statistics-item" *ngIf="itemInfo.statistics.dislikeCount">
+            <div class="icon"><img src="../../../assets/image/icons/dislike.svg" alt="" /></div>
+            <div class="value">{{ itemInfo.statistics.dislikeCount | shortNumber }}</div>
+          </div>
+          <div class="flex-row statistics-item">
+            <div class="icon"><img src="../../../assets/image/icons/Group 9.svg" alt="" /></div>
+            <div class="value">{{ itemInfo.statistics.commentCount | shortNumber }}</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </ng-template>
 </div>

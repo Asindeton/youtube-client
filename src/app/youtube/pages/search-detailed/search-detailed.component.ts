@@ -22,7 +22,8 @@ export class SearchDetailedComponent implements OnInit, OnDestroy {
     public dataService: DataService,
   ) {}
 
-  //to-do remove to data service
+  public isLoaded = true;
+
   responseData: ISearchResponse = defaultResponse;
 
   items: ISearchItem[] = this.responseData.items;
@@ -34,19 +35,22 @@ export class SearchDetailedComponent implements OnInit, OnDestroy {
   private dataSubscription: Subscription = new Subscription();
 
   ngOnInit() {
-    this.dataSubscription = this.dataService.data.subscribe((data) => {
-      this.responseData = data;
-      this.items = data.items;
-    });
+    this.dataSubscription = this.dataService
+      .getVideoDataRequest(this.route.snapshot.params['id'])
+      .subscribe((data) => {
+        this.responseData = data;
+        this.items = data.items;
 
-    const tempArr = this.items.find((elem) => elem.id == this.route.snapshot.params['id']);
+        const tempArr = this.items.find((elem) => elem.id == this.route.snapshot.params['id']);
 
-    if (tempArr !== undefined) {
-      this.itemInfo = tempArr;
-      this.cardBorderColor = this.cardService.getBorderColor(this.itemInfo.snippet.publishedAt);
-    } else {
-      this.router.navigate(['error']);
-    }
+        if (tempArr !== undefined) {
+          this.itemInfo = tempArr;
+          this.cardBorderColor = this.cardService.getBorderColor(this.itemInfo.snippet.publishedAt);
+          this.isLoaded = false;
+        } else {
+          this.router.navigate(['error']);
+        }
+      });
   }
 
   ngOnDestroy(): void {

@@ -7,11 +7,18 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { CoreService } from './services/core.service';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApiInterceptorService } from './services/api-interceptor.service';
 @NgModule({
   declarations: [HeaderComponent, ErrorPageComponent],
   imports: [CommonModule, RouterModule, HttpClientModule],
   exports: [HeaderComponent],
-  providers: [CoreService, AuthService, SearchService, DataService],
+  providers: [
+    CoreService,
+    AuthService,
+    SearchService,
+    DataService,
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService, multi: true },
+  ],
 })
 export class CoreModule {}
