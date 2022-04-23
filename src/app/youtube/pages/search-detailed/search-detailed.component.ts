@@ -1,6 +1,7 @@
+import { Subscription } from 'rxjs';
 import { DataService } from './../../../core/services/data.service';
 import { CardService } from './../../services/card.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import * as defaultResponse from 'src/assets/data/defaultResponse.json';
@@ -12,7 +13,7 @@ import { ISearchResponse } from '../../components/search/models/search-response.
   templateUrl: './search-detailed.component.html',
   styleUrls: ['./search-detailed.component.scss'],
 })
-export class SearchDetailedComponent implements OnInit {
+export class SearchDetailedComponent implements OnInit, OnDestroy {
   constructor(
     public route: ActivatedRoute,
     private router: Router,
@@ -30,8 +31,10 @@ export class SearchDetailedComponent implements OnInit {
 
   public cardBorderColor = '';
 
+  private dataSubscription: Subscription = new Subscription();
+
   ngOnInit() {
-    this.dataService.data.subscribe((data) => {
+    this.dataSubscription = this.dataService.data.subscribe((data) => {
       this.responseData = data;
       this.items = data.items;
     });
@@ -44,6 +47,10 @@ export class SearchDetailedComponent implements OnInit {
     } else {
       this.router.navigate(['error']);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.dataSubscription.unsubscribe();
   }
 
   back() {
