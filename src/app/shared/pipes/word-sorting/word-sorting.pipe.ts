@@ -24,9 +24,9 @@ export class WordSortingPipe implements PipeTransform {
           elem.snippet.title.toLowerCase().includes(searchedValue.toLowerCase()),
         );
       }
-      if (args[1] == SortDirection.up) {
+      if (args[1] == SortDirection.Up) {
         returnedValue = returnedValue;
-      } else if (args[1] == SortDirection.down) {
+      } else if (args[1] == SortDirection.Down) {
         returnedValue = returnedValue.reverse();
       }
 

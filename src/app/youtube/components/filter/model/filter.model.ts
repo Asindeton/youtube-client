@@ -1,4 +1,10 @@
 export enum SortDirection {
-  up = 'up',
-  down = 'down',
+  Up = 'up',
+  Down = 'down',
+}
+
+export enum SortType {
+  Date = 'date',
+  Count = 'count',
+  Word = 'word',
 }

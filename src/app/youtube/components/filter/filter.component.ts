@@ -1,7 +1,7 @@
 import { FilterService } from './../../services/filter.service';
 import { CoreService } from './../../../core/services/core.service';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-
+import { SortType } from './model/filter.model';
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
@@ -12,6 +12,12 @@ export class FilterComponent {
 
   @ViewChild('wordInput')
   wordInput!: ElementRef;
+
+  public sortTypeDate: SortType = SortType.Date;
+
+  public sortTypeCount: SortType = SortType.Count;
+
+  public sortTypeWord: SortType = SortType.Word;
 
   filterHandler(event: string) {
     this.filterService.filterHandler(event, this.wordInput);

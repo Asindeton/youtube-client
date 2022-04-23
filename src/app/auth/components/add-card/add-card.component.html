@@ -1,4 +1,4 @@
-<ng-container *ngIf="!showResult; else elseTemplate">
+<ng-container *ngIf="!showResult; else successTemplate">
   <div class="wrapper flex-column">
     <h2>{{ 'Create new card' | titlecase }}</h2>
     <form
@@ -85,7 +85,7 @@
     </form>
   </div>
 </ng-container>
-<ng-template #elseTemplate>
+<ng-template #successTemplate>
   <div class="wrapper result">
     <h2>Card is created. Look result in console (press F12).</h2>
   </div>

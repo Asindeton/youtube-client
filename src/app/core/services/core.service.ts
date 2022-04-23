@@ -10,7 +10,7 @@ export class CoreService {
 
   public searchWord: string = '';
 
-  public sortDirection: SortDirection = SortDirection.up;
+  public sortDirection: SortDirection = SortDirection.Up;
 
   public showFilter = false;
 
