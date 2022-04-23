@@ -13,7 +13,7 @@ export class FilterComponent {
   @ViewChild('wordInput')
   wordInput!: ElementRef;
 
-  public sortType = SortType;
+  public SortType = SortType;
 
   filterHandler(event: string) {
     this.filterService.filterHandler(event, this.wordInput);
