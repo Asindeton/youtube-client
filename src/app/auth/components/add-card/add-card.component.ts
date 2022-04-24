@@ -1,7 +1,8 @@
+import { AdminAction } from './../../../redux/actions/admin.action';
+import { Store } from '@ngrx/store';
 import { AddCardService } from './../../services/add-card.service';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { CoreService } from 'src/app/core/services/core.service';
 
 @Component({
   selector: 'app-add-card',
@@ -9,7 +10,7 @@ import { CoreService } from 'src/app/core/services/core.service';
   styleUrls: ['./add-card.component.scss'],
 })
 export class AddCardComponent {
-  constructor(private addCardService: AddCardService, private coreService: CoreService) {
+  constructor(private addCardService: AddCardService, private store: Store) {
     this.createForm();
   }
 
@@ -17,16 +18,14 @@ export class AddCardComponent {
 
   addCardForm!: FormGroup;
 
-  showResult = false;
-
   formSubmit() {
     this.errorOnsubmit = true;
     if (!this.addCardForm.valid) {
       return;
     }
     this.errorOnsubmit = false;
-    console.table(this.addCardForm.value);
-    this.showResult = true;
+    this.store.dispatch(AdminAction.addCard({ card: this.addCardForm.value }));
+    this.addCardForm.reset();
   }
 
   private createForm() {
@@ -44,10 +43,6 @@ export class AddCardComponent {
       videoLink: new FormControl('', [
         Validators.required,
         Validators.pattern(this.addCardService.URL_REGEXP),
-      ]),
-      creationDate: new FormControl('', [
-        Validators.required,
-        this.addCardService.dateValidation(),
       ]),
     });
   }

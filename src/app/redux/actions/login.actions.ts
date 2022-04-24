@@ -1,6 +1,7 @@
 import { createAction } from '@ngrx/store';
 
 export const LOGIN_KEY = 'login';
+
 export const LoginAction = {
   login: createAction('[LOGIN] login'),
   logout: createAction('[LOGIN] logout'),
