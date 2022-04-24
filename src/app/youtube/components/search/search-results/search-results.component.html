@@ -12,4 +12,7 @@
       [post]="post"
     ></app-search-item>
   </div>
+  <div class="content search-result">
+    <app-card-item *ngFor="let card of cards$ | async" [card]="card"></app-card-item>
+  </div>
 </div>

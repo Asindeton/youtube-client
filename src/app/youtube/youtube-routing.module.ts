@@ -1,3 +1,4 @@
+import { CardDetailedComponent } from './pages/card-detailed/card-detailed.component';
 import { SearchDetailedComponent } from './pages/search-detailed/search-detailed.component';
 import { SearchResultPageComponent } from './pages/search-result-page/search-result-page.component';
 import { NgModule } from '@angular/core';
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'detailed/:id',
     component: SearchDetailedComponent,
+  },
+  {
+    path: 'card-detailed/:id',
+    component: CardDetailedComponent,
   },
 ];
 

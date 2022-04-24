@@ -1,3 +1,4 @@
+import { selectCard } from './../../../../redux/selectors/card.selector';
 import { selectYoutube } from './../../../../redux/selectors/youtube.selector';
 import { DataService } from './../../../../core/services/data.service';
 import { CoreService } from './../../../../core/services/core.service';
@@ -19,4 +20,6 @@ export class SearchResultsComponent {
   ) {}
 
   items$ = this.store.select(selectYoutube);
+
+  cards$ = this.store.select(selectCard);
 }

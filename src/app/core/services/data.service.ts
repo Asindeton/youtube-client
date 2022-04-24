@@ -47,7 +47,7 @@ export class DataService {
     this.getDataRequest(content).subscribe((response) => {
       response.items.forEach((elem) => this.videoIdArray.push(elem.id.videoId));
       this.getVideoDataRequest(this.videoIdArray.join()).subscribe((newResponse) => {
-        this.store.dispatch(YoutubeActions.get({ newResponse: newResponse }));
+        this.store.dispatch(YoutubeActions.get({ newResponse }));
         this.videoIdArray = [];
       });
     });

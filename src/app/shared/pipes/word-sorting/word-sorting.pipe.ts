@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class WordSortingPipe implements PipeTransform {
   transform(value: ISearchItem[] | undefined | null, ...args: string[]): ISearchItem[] {
-    if (value == undefined || value == null) {
+    if (value == null) {
       return [];
     }
     if (args[0] !== '') {

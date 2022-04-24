@@ -9,7 +9,10 @@ export class CardService {
     yellow: '#F2C94C',
   };
 
-  public getBorderColor(date: string): string {
+  public getBorderColor(date: string | number | undefined): string {
+    if (date == undefined) {
+      return this.colors.blue;
+    }
     const date1 = new Date(date).getTime();
     const date2 = new Date().getTime();
     const diffTime = Math.abs(date2 - date1);
