@@ -6,7 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'wordSorting',
 })
 export class WordSortingPipe implements PipeTransform {
-  transform(value: ISearchItem[], ...args: string[]): ISearchItem[] {
+  transform(value: ISearchItem[] | undefined | null, ...args: string[]): ISearchItem[] {
+    if (value == undefined || value == null) {
+      return [];
+    }
     if (args[0] !== '') {
       let returnedValue = value;
       if (args[2] == 'date') {

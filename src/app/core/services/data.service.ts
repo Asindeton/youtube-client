@@ -1,14 +1,13 @@
-import { retry, Observable, catchError, EMPTY, BehaviorSubject } from 'rxjs';
+import { YoutubeActions } from './../../redux/actions/youtube.actions';
+import { Store } from '@ngrx/store';
+import { retry, Observable, catchError, EMPTY } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ISearchResponse } from 'src/app/youtube/components/search/models/search-response.model';
-import * as defaultResponse from 'src/assets/data/defaultResponse.json';
 
 @Injectable()
 export class DataService {
-  constructor(private httpClient: HttpClient) {}
-
-  public data = new BehaviorSubject<ISearchResponse>(defaultResponse);
+  constructor(private httpClient: HttpClient, private store: Store) {}
 
   public videoIdArray: string[] = [];
 
@@ -48,7 +47,7 @@ export class DataService {
     this.getDataRequest(content).subscribe((response) => {
       response.items.forEach((elem) => this.videoIdArray.push(elem.id.videoId));
       this.getVideoDataRequest(this.videoIdArray.join()).subscribe((newResponse) => {
-        this.data.next(newResponse);
+        this.store.dispatch(YoutubeActions.get({ newResponse: newResponse }));
         this.videoIdArray = [];
       });
     });
