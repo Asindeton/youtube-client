@@ -1,3 +1,4 @@
+import { Store } from '@ngrx/store';
 import { AuthService } from './../services/auth.service';
 import { Injectable } from '@angular/core';
 import {
@@ -8,12 +9,13 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { selectLogin } from 'src/app/redux/selectors/login.selector';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private store: Store) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -25,7 +27,8 @@ export class AuthGuard implements CanActivate {
 
   checkLogin(url: string): boolean {
     let isLogin!: boolean;
-    this.authService.getIsLoginState().subscribe((val) => (isLogin = val));
+    let isLogin$ = this.store.select(selectLogin);
+    isLogin$.subscribe((val) => (isLogin = val));
     if (isLogin) {
       if (url == '/login') {
         this.router.navigate(['/home']);

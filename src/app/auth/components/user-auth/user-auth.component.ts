@@ -1,4 +1,3 @@
-import { CoreService } from './../../../core/services/core.service';
 import { LoginService } from './../../services/login.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -9,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./user-auth.component.scss'],
 })
 export class UserAuthComponent {
-  constructor(private loginService: LoginService, private coreService: CoreService) {
+  constructor(private loginService: LoginService) {
     this.createForm();
   }
 

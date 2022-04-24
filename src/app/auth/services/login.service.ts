@@ -1,12 +1,14 @@
+import { Store } from '@ngrx/store';
 import { ILoginResult } from './model/login.model';
 import { Router } from '@angular/router';
 import { AuthService } from './../../core/services/auth.service';
 import { Injectable } from '@angular/core';
 import { ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
+import { LoginAction } from 'src/app/redux/actions/login.actions';
 
 @Injectable()
 export class LoginService {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private store: Store) {}
 
   emailValidatorRegEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -19,9 +21,9 @@ export class LoginService {
   submitHandler(result: ILoginResult) {
     const { login, password } = result;
     localStorage.setItem('youtube-client', `${login} - ${password}`);
-    this.authService.isLoginObserver.next(true);
     this.authService.nickname = login;
 
+    this.store.dispatch(LoginAction.login());
     this.router.navigate(['home']);
   }
 
