@@ -1,9 +1,10 @@
+import { DataService } from './data.service';
 import { SortDirection } from './../../youtube/components/filter/model/filter.model';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class CoreService {
-  public count = 0;
+  constructor(private dataService: DataService) {}
 
   public sortBy: string = '';
 
@@ -13,18 +14,16 @@ export class CoreService {
 
   public showFilter = false;
 
-  setSearchWord(val: string) {
+  toggleFilter() {
+    this.showFilter = !this.showFilter;
+  }
+
+  async setSearchWord(val: string) {
     this.searchWord = val;
-    console.log(this.searchWord);
+    this.dataService.loadData(val);
   }
 
   getSearchWord() {
     return this.searchWord;
-  }
-
-  check() {
-    this.count++;
-    console.log(this.count);
-    console.log('isWork');
   }
 }

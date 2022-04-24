@@ -1,3 +1,4 @@
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Injectable, ApplicationRef } from '@angular/core';
 
@@ -5,13 +6,19 @@ import { Injectable, ApplicationRef } from '@angular/core';
 export class AuthService {
   constructor(private router: Router, private ref: ApplicationRef) {}
 
-  isLogin = localStorage.getItem('youtube-client') !== null ? true : false;
+  isLoginObserver = new BehaviorSubject<boolean>(
+    localStorage.getItem('youtube-client') !== null ? true : false,
+  );
 
-  nickname = this.isLogin ? localStorage.getItem('youtube-client')?.split(' - ')[0] : '';
+  nickname = this.isLoginObserver ? localStorage.getItem('youtube-client')?.split(' - ')[0] : '';
 
   logout() {
     localStorage.removeItem('youtube-client');
-    this.isLogin = false;
+    this.isLoginObserver.next(false);
     this.router.navigate(['/login']);
+  }
+
+  getIsLoginState(): Observable<boolean> {
+    return this.isLoginObserver;
   }
 }

@@ -8,11 +8,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class WordSortingPipe implements PipeTransform {
   transform(value: ISearchItem[], ...args: string[]): ISearchItem[] {
     if (args[0] !== '') {
-      let returnedValue = value.filter((elem) =>
-        elem.snippet.title.toLowerCase().includes(args[0].toLowerCase()),
-      );
-      console.log(args);
-
+      let returnedValue = value;
       if (args[2] == 'date') {
         returnedValue = returnedValue.sort(
           (a, b) =>

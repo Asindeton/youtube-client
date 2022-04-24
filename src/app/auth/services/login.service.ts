@@ -11,7 +11,7 @@ export class LoginService {
   submitHandler(event: any) {
     const { login, password } = event.target.elements;
     localStorage.setItem('youtube-client', `${login.value} - ${password.value}`);
-    this.authService.isLogin = true;
+    this.authService.isLoginObserver.next(true);
     this.authService.nickname = login.value;
 
     this.router.navigate(['home']);
