@@ -3,23 +3,23 @@
     <div class="title">Sorting by:</div>
     <div
       class="filter-item"
-      (click)="filterHandler('date')"
-      [class.active]="this.filterService.sortBy === 'date'"
+      (click)="filterHandler(SortType.Date)"
+      [class.active]="this.filterService.sortBy === SortType.Date"
     >
       date
     </div>
     <div
       class="filter-item"
-      (click)="filterHandler('count')"
-      [class.active]="this.filterService.sortBy === 'count'"
+      (click)="filterHandler(SortType.Count)"
+      [class.active]="this.filterService.sortBy === SortType.Count"
     >
       count of views
     </div>
     <div class="flex-row input-row">
       <div
         class="search-row filter-item"
-        (click)="filterHandler('word')"
-        [class.active]="this.filterService.sortBy.includes('word')"
+        (click)="filterHandler(SortType.Word)"
+        [class.active]="this.filterService.sortBy.includes(SortType.Word)"
       >
         by word or sentence
       </div>

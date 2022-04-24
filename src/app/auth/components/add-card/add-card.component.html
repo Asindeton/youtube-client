@@ -1,0 +1,92 @@
+<ng-container *ngIf="!showResult; else successTemplate">
+  <div class="wrapper flex-column">
+    <h2>{{ 'Create new card' | titlecase }}</h2>
+    <form
+      [formGroup]="addCardForm"
+      (ngSubmit)="formSubmit()"
+      class="flex-column"
+      [class.err_on_submit]="errorOnsubmit"
+    >
+      <label class="flex-column">
+        <span>{{ 'title' | titlecase }}</span>
+        <input type="text" class="input-text" name="title" formControlName="title" required />
+        <ng-container *ngIf="(title!.invalid && (title!.touched || title!.dirty)) || errorOnsubmit">
+          <span *ngIf="title!.errors?.['required']">Please enter a title</span>
+          <span *ngIf="title!.errors?.['minlength']">The title is too short</span>
+          <span *ngIf="title!.errors?.['maxlength']">The title is too long</span>
+        </ng-container>
+      </label>
+      <label class="flex-column">
+        <span>{{ 'description' | titlecase }}</span>
+        <input type="text" class="input-text" name="description" formControlName="description" />
+        <ng-container
+          *ngIf="
+            (description!.invalid && (description!.touched || description!.dirty)) || errorOnsubmit
+          "
+        >
+          <span *ngIf="description!.errors?.['maxlength']">The description is too long</span>
+        </ng-container>
+      </label>
+      <label class="flex-column">
+        <span>{{ 'link to the image cover' | titlecase }}</span>
+        <input
+          type="text"
+          class="input-text"
+          name="imageCoverLink"
+          formControlName="imageCoverLink"
+          required
+        />
+        <ng-container
+          *ngIf="
+            (imageCoverLink!.invalid && (imageCoverLink!.touched || imageCoverLink!.dirty)) ||
+            errorOnsubmit
+          "
+        >
+          <span *ngIf="imageCoverLink!.errors?.['required']">Please enter a link to the image</span>
+          <span *ngIf="imageCoverLink!.errors?.['pattern']">The image link is invalid</span>
+        </ng-container>
+      </label>
+      <label class="flex-column">
+        <span>{{ 'link to the video' | titlecase }}</span>
+        <input
+          type="text"
+          class="input-text"
+          name="videoLink"
+          formControlName="videoLink"
+          required
+        />
+        <ng-container
+          *ngIf="(videoLink!.invalid && (videoLink!.touched || videoLink!.dirty)) || errorOnsubmit"
+        >
+          <span *ngIf="videoLink!.errors?.['required']">Please enter a link to the video</span>
+          <span *ngIf="videoLink!.errors?.['pattern']">The video link is invalid</span>
+        </ng-container>
+      </label>
+      <label class="flex-column">
+        <span>{{ 'creation date' | titlecase }}</span>
+        <input
+          type="date"
+          class="input-text"
+          name="creationDate"
+          formControlName="creationDate"
+          required
+        />
+        <ng-container
+          *ngIf="
+            (creationDate!.invalid && (creationDate!.touched || creationDate!.dirty)) ||
+            errorOnsubmit
+          "
+        >
+          <span *ngIf="creationDate!.errors?.['required']">Please enter a creation date</span>
+          <span *ngIf="creationDate!.errors?.['dateValid']">The date is invalid</span>
+        </ng-container>
+      </label>
+      <button class="btn btn-text">{{ 'Create card' | titlecase }}</button>
+    </form>
+  </div>
+</ng-container>
+<ng-template #successTemplate>
+  <div class="wrapper result">
+    <h2>Card is created. Look result in console (press F12).</h2>
+  </div>
+</ng-template>

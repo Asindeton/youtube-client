@@ -1,11 +1,11 @@
 import { ElementRef, Injectable } from '@angular/core';
-import { SortDirection } from '../components/filter/model/filter.model';
+import { SortDirection, SortType } from '../components/filter/model/filter.model';
 
 @Injectable()
 export class FilterService {
   public sortBy: string = '';
 
-  public sortDirection: SortDirection = SortDirection.up;
+  public sortDirection: SortDirection = SortDirection.Up;
 
   filterHandler(event: string, wordInput: ElementRef) {
     if (this.sortBy == event) {
@@ -13,8 +13,8 @@ export class FilterService {
     } else {
       this.sortBy = event;
     }
-    if (this.sortBy.includes('word')) {
-      this.sortBy = 'word-' + wordInput.nativeElement.value;
+    if (this.sortBy.includes(SortType.Word)) {
+      this.sortBy = `${SortType.Word}-${wordInput.nativeElement.value}`;
       if (wordInput.nativeElement.value) {
         this.changeSortDirection();
       }
@@ -22,13 +22,13 @@ export class FilterService {
   }
 
   searchByWord(event: string) {
-    if (this.sortBy.includes('word')) {
-      this.sortBy = 'word-' + event;
+    if (this.sortBy.includes(SortType.Word)) {
+      this.sortBy = `${SortType.Word}-${event}`;
     }
   }
 
   changeSortDirection() {
     this.sortDirection =
-      this.sortDirection == SortDirection.up ? SortDirection.down : SortDirection.up;
+      this.sortDirection == SortDirection.Up ? SortDirection.Down : SortDirection.Up;
   }
 }
