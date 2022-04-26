@@ -25,12 +25,12 @@ export class CardDetailedComponent implements OnInit {
 
   public itemInfo!: ICard | undefined;
 
-  cards$ = this.store.select(selectCard).pipe(first());
+  cards$ = this.store.select(selectCard);
 
   data!: ICard[];
 
   ngOnInit(): void {
-    this.cards$.subscribe((data) => {
+    this.cards$.pipe(first()).subscribe((data) => {
       this.data = data;
       this.itemInfo = this.data.find((elem) => elem.created == this.route.snapshot.params['id']);
 

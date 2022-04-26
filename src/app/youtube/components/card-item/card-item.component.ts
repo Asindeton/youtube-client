@@ -1,6 +1,5 @@
 import { ICard } from './../../../redux/actions/admin.action';
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { CardService } from '../../services/card.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { CardService } from '../../services/card.service';
   styleUrls: ['./card-item.component.scss'],
 })
 export class CardItemComponent implements OnInit {
-  constructor(private cardService: CardService, public router: Router) {}
+  constructor(private cardService: CardService) {}
 
   @Input() public card!: ICard;
 
