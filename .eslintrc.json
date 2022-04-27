@@ -1,12 +1,20 @@
 {
   "root": true,
-  "ignorePatterns": ["projects/**/*"],
-  "plugins": ["import"],
+  "ignorePatterns": [
+    "projects/**/*"
+  ],
+  "plugins": [
+    "import"
+  ],
   "overrides": [
     {
-      "files": ["*.ts"],
+      "files": [
+        "*.ts"
+      ],
       "parserOptions": {
-        "project": ["tsconfig.json"],
+        "project": [
+          "tsconfig.json"
+        ],
         "createDefaultProgram": true
       },
       "extends": [
@@ -35,14 +43,30 @@
       }
     },
     {
-      "files": ["*.component.html"],
-      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "files": [
+        "*.component.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
       "rules": {}
     },
     {
-      "files": ["*.component.ts"],
-      "extends": ["plugin:@angular-eslint/template/process-inline-templates"],
+      "files": [
+        "*.component.ts"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
       "rules": {}
+    },
+    {
+      "files": [
+        "*.ts"
+      ],
+      "extends": [
+        "plugin:ngrx/recommended"
+      ]
     }
   ]
 }

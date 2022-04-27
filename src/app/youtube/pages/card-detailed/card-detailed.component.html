@@ -1,0 +1,22 @@
+<div class="wrapper flex-row">
+  <div class="back-wrapper" (click)="back()">
+    <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 2L3 10.2162L16 18" stroke="#F2F2F2" stroke-width="3" />
+    </svg>
+  </div>
+  <div class="flex-row content-wrapper">
+    <div class="img-wrapper">
+      <img [src]="itemInfo?.imageCoverLink" alt="" />
+    </div>
+    <div class="flex-column text-content" [style.border-color]="cardBorderColor">
+      <div class="flex-row title-row">
+        <h2 class="title">{{ itemInfo?.title }}</h2>
+        <time class="time">{{ itemInfo?.created | date: 'fullDate' }}</time>
+      </div>
+      <div class="flex-column">
+        <div class="desc-title">Description:</div>
+        <div class="description-content">{{ itemInfo?.description }}</div>
+      </div>
+    </div>
+  </div>
+</div>

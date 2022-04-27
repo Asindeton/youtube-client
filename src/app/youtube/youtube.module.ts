@@ -9,6 +9,8 @@ import { SearchResultPageComponent } from './pages/search-result-page/search-res
 import { YoutubeRoutingModule } from './youtube-routing.module';
 import { FilterService } from './services/filter.service';
 import { SearchDetailedComponent } from './pages/search-detailed/search-detailed.component';
+import { CardItemComponent } from './components/card-item/card-item.component';
+import { CardDetailedComponent } from './pages/card-detailed/card-detailed.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { SearchDetailedComponent } from './pages/search-detailed/search-detailed
     SearchItemComponent,
     SearchResultPageComponent,
     SearchDetailedComponent,
+    CardItemComponent,
+    CardDetailedComponent,
   ],
   imports: [CommonModule, SharedModule, YoutubeRoutingModule],
   providers: [FilterService, CardService],
